@@ -1,16 +1,33 @@
 @startuml
-'https://plantuml.com/object-diagram
-
-object London
-object Washington
-object Berlin
-object NewYork
-
-map CapitalCity {
- UK *-> London
- USA *--> Washington
- Germany *---> Berlin
+!pragma layout smetana
+class Main
+{
++ void main(String[] args)
 }
 
-NewYork --> CapitalCity::USA
+class Driver
+{
+- String name
+- int Age
++ Driver(String name, int age)
++ String toString()
+}
+
+class Car
+{
+- String make
+- String model
+- year
+- BodyStyle
+- Driver driver
++ Driver getDriver()
++ car (String make, String model, int year, String bodyStyle)
++ void setDriver(Driver driver)
++ String toString()
+}
+
+Main <|-- Car
+Main <|-- Driver
+Car <|-- Driver
+
 @enduml
